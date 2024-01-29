@@ -87,14 +87,14 @@ def start_container(
             }
             labels.update(production_labels)
 
-            if "https" in os.environ["DOMAIN_NAME"]:
-                # SSL specific labels
-                ssl_labels = {
-                    f"traefik.http.routers.{container_name}.entrypoints": "web-secure",
-                    f"traefik.http.routers.{container_name}.tls": "true",
-                    f"traefik.http.routers.{container_name}.tls.certresolver": "myResolver",
-                }
-                labels.update(ssl_labels)
+            # if "https" in os.environ["DOMAIN_NAME"]:
+            #     # SSL specific labels
+            #     ssl_labels = {
+            #         f"traefik.http.routers.{container_name}.entrypoints": "web-secure",
+            #         f"traefik.http.routers.{container_name}.tls": "true",
+            #         f"traefik.http.routers.{container_name}.tls.certresolver": "myResolver",
+            #     }
+            #     labels.update(ssl_labels)
         else:
             # Development specific labels
             development_labels = {

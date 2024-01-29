@@ -196,7 +196,8 @@ export const getAppContainerURL = async (
         const url = `${getAgentaApiUrl()}/api/containers/container_url/`
         const response = await axios.get(url, {params: {variant_id: variantId, base_id: baseId}})
         if (response.status === 200 && response.data && response.data.uri) {
-            return response.data.uri
+            const modifiedString = response.data.uri.replace('http://localhost', getAgentaApiUrl());
+            return modifiedString
         } else {
             return ""
         }
